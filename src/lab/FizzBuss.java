@@ -12,10 +12,15 @@ public class FizzBuss {
 
         try {
             int value = Integer.parseInt(number);
+            if (isNotNegative(value)) {
+                throw new IllegalArgumentException("Number is negative");
+            }
             calcFizzBuzz(value);
 
         } catch (NumberFormatException e) {
             System.out.println("That is not a valid integer");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught a negative value error");
         }
         scanner.close();
     }
@@ -36,5 +41,9 @@ public class FizzBuss {
         else {
             System.out.print(number);
         }
+    }
+
+    private static boolean isNotNegative(int number) {
+        return number <= 0;
     }
 }
